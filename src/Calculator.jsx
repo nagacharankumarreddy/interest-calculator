@@ -59,7 +59,6 @@ function Calculator() {
             id="principle"
             type="number"
             step="1000"
-            value="1000"
           />
         </div>
         <div className="form-group m-2">
@@ -69,7 +68,6 @@ function Calculator() {
             id="interest"
             type="number"
             step="0.50"
-            value="1.0"
           />
         </div>
         <div className="form-group m-2">
@@ -98,8 +96,9 @@ function Calculator() {
         <div>
           <div className="row d-flex justify-content-center">
             <div className="col text-danger text-center h1">
-              Time : {daysData.YEARS.years} Years {daysData.MONTHS.months}{" "}
-              Months and {daysData.DAYS.days} Days (total {days} days)
+              Time : <br></br>
+              {daysData.YEARS.years} Years {daysData.MONTHS.months} Months and{" "}
+              {daysData.DAYS.days} Days (total {days} days)
             </div>
           </div>
 
