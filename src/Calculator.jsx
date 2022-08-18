@@ -8,15 +8,14 @@ function Calculator() {
   const [endDate, setEndDate] = useState(new Date());
   const [days, setDays] = useState();
   const [daysData, setDaysData] = useState({ DAYS: 0, MONTHS: 0, YEARS: 0 });
-  const [intData, setIntData] = useState({
-    intyears: 0,
-    intmonths: 0,
-    intdays: 0,
-    inttotal: 0,
-  });
+  const [principle, setPrinciple] = useState(0);
+  const [totInterest, setTotalInterest] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
   const [disp, setDisp] = useState(false);
+
   function calc() {
     var principle = document.getElementById("principle").value;
+    setPrinciple(principle);
     var interest = document.getElementById("interest").value;
     var endsec = moment(endDate).valueOf();
     var startsec = moment(startDate).valueOf();
@@ -39,15 +38,10 @@ function Calculator() {
     var intPerYears = intPerYear * years;
     var intPerMonths = intPerMonth * months;
     var intPerDays = intPerDay * days;
-    var totInterest = intPerYears + intPerMonths + intPerDays;
-    setIntData({
-      ...intData,
-      intyears: { intPerYears },
-      intmonths: { intPerMonths },
-      intdays: { intPerDays },
-    });
-    console.log(intData);
-
+    var totInterest = Math.ceil(intPerYears + intPerMonths + intPerDays);
+    setTotalInterest(totInterest);
+    var x = parseInt(principle) + totInterest;
+    setTotalAmount(x);
     setDisp(true);
   }
   return (
@@ -65,6 +59,7 @@ function Calculator() {
             id="principle"
             type="number"
             step="1000"
+            value="1000"
           />
         </div>
         <div className="form-group m-2">
@@ -74,6 +69,7 @@ function Calculator() {
             id="interest"
             type="number"
             step="0.50"
+            value="1.0"
           />
         </div>
         <div className="form-group m-2">
@@ -108,7 +104,14 @@ function Calculator() {
           </div>
 
           <div className="row d-flex justify-content-center">
-            <div className="col text-danger text-center h1"></div>
+            <div className="col text-danger text-center h1">
+              Interest: {totInterest}
+            </div>
+          </div>
+          <div className="row d-flex justify-content-center">
+            <div className="col text-danger text-center h1">
+              Total Amount to be Paid: {totalAmount}
+            </div>
           </div>
         </div>
       ) : (
