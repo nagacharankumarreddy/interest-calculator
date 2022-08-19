@@ -20,6 +20,7 @@ function Calculator() {
     var endsec = moment(endDate).valueOf();
     var startsec = moment(startDate).valueOf();
     var diffDays = Math.ceil((endsec - startsec) / (24 * 60 * 60 * 1000));
+    console.log(diffDays);
     setDays(diffDays);
     var years = parseInt(diffDays / 365);
     var yeardays = years * 365;
