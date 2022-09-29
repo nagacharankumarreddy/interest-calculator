@@ -15,8 +15,25 @@ function Calculator() {
 
   function calc() {
     var principle = document.getElementById("principle").value;
+    if(principle==""){
+      document.getElementById('pamount-error').style.display="block";
+      return ;
+    }
+    else{
+      document.getElementById('pamount-error').style.display="none";
+    }
+    
+    
     setPrinciple(principle);
     var interest = document.getElementById("interest").value;
+    if(interest==""){
+      document.getElementById('interest-error').style.display="block";
+      return;
+    }
+    else{
+      document.getElementById('interest-error').style.display="none";
+
+    }
     var endsec = moment(endDate).valueOf();
     var startsec = moment(startDate).valueOf();
     var diffDays = Math.ceil((endsec - startsec) / (24 * 60 * 60 * 1000));
@@ -46,7 +63,7 @@ function Calculator() {
     setDisp(true);
   }
   return (
-    <div className="container vh-100 bg-primary">
+    <div className="container vh-100 main">
       <div className="row d-flex justify-content-center">
         <div className="col text-danger text-center h1">
           Simple interest Calculator
@@ -60,7 +77,9 @@ function Calculator() {
             id="principle"
             type="number"
             step="1000"
+            required
           />
+          <label id="pamount-error" style={{display:"none"}}>Amount should not be empty</label>
         </div>
         <div className="form-group m-2">
           <label className="h3">Interest</label>
@@ -69,7 +88,10 @@ function Calculator() {
             id="interest"
             type="number"
             step="0.50"
+            required
           />
+          <label id="interest-error" style={{display:"none"}}>Interest should not be empty</label>
+
         </div>
         <div className="form-group m-2">
           <label className="h3">Start Date</label>
@@ -96,15 +118,14 @@ function Calculator() {
       {disp ? (
         <div>
           <div className="row d-flex justify-content-center">
-            <div className="col text-danger text-center h1">
-              Time : <br></br>
+            <div className="col text-danger text-center h3">
               {daysData.YEARS.years} Years {daysData.MONTHS.months} Months and{" "}
               {daysData.DAYS.days} Days (total {days} days)
             </div>
           </div>
 
           <div className="row d-flex justify-content-center">
-            <div className="col text-danger text-center h1">
+            <div className="col text-danger text-center h3">
               Interest: {totInterest}
             </div>
           </div>
