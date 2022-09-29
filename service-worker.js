@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/interest-calculator/precache-manifest.25350ad1fe1a65d3081f6d3ccaba75e7.js"
+  "/interest-calculator/precache-manifest.cde33586f40d6b15e147141c81395d7d.js"
 );
 
 workbox.clientsClaim();
